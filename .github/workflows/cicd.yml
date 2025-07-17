@@ -2,7 +2,7 @@ name: CI/CD Deplay
 
 on:
   push:
-  branches: [main]
+    branches: [main]
 
 jobs:
   deploy:
@@ -35,7 +35,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACESS_KEY }}
           aws-region: ap-northeast-2
 
-      - name: Deloy to S3
+      - name: Deploy to S3
         run: aws s3 sync ./build s3://${{ secrets.S3_BUCKET_NAME }} --delete
 
       - name: CloudFront Invalidate Cache
